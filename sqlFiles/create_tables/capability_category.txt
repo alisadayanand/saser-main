@@ -1,0 +1,20 @@
+/*Capability categories*/
+CREATE TABLE `Capabaility_Category0` (`Category_Zero_ID` INT COLLATE utf8mb4_unicode_ci NOT NULL, 
+									`Category_Name` VARCHAR(250) COLLATE utf8mb4_unicode_ci NOT NULL, 
+									PRIMARY KEY(`Category_Zero_ID`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+GO 
+
+CREATE TABLE `Capabaility_Category1` (`Category_One_ID` INT COLLATE utf8mb4_unicode_ci NOT NULL, 
+									`Category_Zero_ID` INT COLLATE utf8mb4_unicode_ci NOT NULL,
+									`Category_Name` VARCHAR(250) COLLATE utf8mb4_unicode_ci NOT NULL, 
+									PRIMARY KEY(`Category_One_ID`),
+									FOREIGN KEY (`Category_Zero_ID`) REFERENCES `Capabaility_Category0`(`Category_Zero_ID`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+GO 
+
+CREATE TABLE `Capabaility_Category2` (`Category_Two_ID` INT COLLATE utf8mb4_unicode_ci NOT NULL, 
+									`Category_One_ID` INT COLLATE utf8mb4_unicode_ci NOT NULL,
+									`Category_Name` VARCHAR(250) COLLATE utf8mb4_unicode_ci NOT NULL, 
+									PRIMARY KEY(`Category_Two_ID`),
+									FOREIGN KEY (`Category_One_ID`) REFERENCES `Capabaility_Category1`(`Category_One_ID`))ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+GO 
+

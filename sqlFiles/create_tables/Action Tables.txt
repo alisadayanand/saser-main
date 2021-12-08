@@ -1,0 +1,63 @@
+
+DROP TABLE IF EXISTS `Action`;
+
+CREATE TABLE `Action` (
+  `Action_ID` int COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Action_Description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Action_Status` int COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Date_Logged` date COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Last_Modified_Date` date COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Person_ID` int COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Person_Responsible_ID` int COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Saser_Initiative_ID` int COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Link_Minutes` int COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Summary` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY `Action_ID` (`Action_ID`)
+  CONSTRAINT `fk_Action_Status`
+		FOREIGN KEY (`Action_Status`) REFERENCES Action Status (`Action_Status`)
+  CONSTRAINT `fk_Person_ID`
+		FOREIGN KEY (`Person_ID`) REFERENCES Person (`Person_ID`)
+  CONSTRAINT `fk_Person_Responsible_ID`
+		FOREIGN KEY (`Person_Responsible_ID`) REFERENCES Person Responsible per Action (`Person_Responsible_ID`)
+  CONSTRAINT `fk_Saser_Initiative`
+		FOREIGN KEY (`Saser_Initiative_ID`) REFERENCES Saser Initiative (`Saser_Initiative_ID`)
+  CONSTRAINT `fk_Link_Minutes`
+		FOREIGN KEY (`Link_Minutes`) REFERENCES Minutes (`Minutes_ID`)
+	
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+
+
+
+
+DROP TABLE IF EXISTS `Action Status`;
+
+CREATE TABLE `Action Status` (
+  `Action_Status` int COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Status_Description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY `Action_Status` (`Action_Status`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+
+
+DROP TABLE IF EXISTS `Person Responsible per Action`;
+
+CREATE TABLE `Person Responsible per Action` (
+  `Person_Responsible_ID` int COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Person_ID` int COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Action_ID` int COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY `Person_Responsible_ID` (`Person_Responsible_ID`)
+  CONSTRAINT `fk_Person_ID`
+		FOREIGN KEY (`Person_ID`) REFERENCES Person (`Person_ID`)
+  CONSTRAINT `fk_Action_ID`
+		FOREIGN KEY (`Action_ID`) REFERENCES Action (`Action_ID`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+

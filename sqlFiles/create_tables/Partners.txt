@@ -1,0 +1,13 @@
+CREATE TABLE Initiative_Partner ('Initiative_Partner_ID' INT COLLATE utf8mb4_unicode_ci
+								'Implement_Partner_ID' INT COLLATE utf8mb4_unicode_ci  NOT NULL,
+								'Saser_Initiative_ID' INT COLLATE utf8mb4_unicode_ci NOT NULL,
+								PRIMARY KEY('Initiative_Partner_ID'),
+								FOREIGN KEY('Implement_Partner_ID') REFERENCES Implement_Partner(Implement_Partner_ID),
+								FOREIGN KEY('Saser_Initiative_ID') REFERENCES	Saser_Initiative(Saser_Initiative_ID)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+
+CREATE TABLE Implement_Partner ('Implement_Partner_ID' INT INT COLLATE utf8mb4_unicode_ciNOT NULL,
+								'Implement_Partner_Name' VARCHAR(250),
+								PRIMARY KEY('Implement_Partner_ID'))ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;;

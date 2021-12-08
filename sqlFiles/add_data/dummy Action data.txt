@@ -1,0 +1,34 @@
+
+/*inserts for action table*/
+
+INSERT INTO action(action_description,action_status,date_logged,last_modified_date,person_id,saser_initiative_id,minutes_id,summary)
+VALUES("Discuss new policies with the cloud team",1,2021-10-15,2021-10-16,1,1,"Discuss the new policies with the cloud team and get their approval")
+
+INSERT INTO action(action_description,action_status,date_logged,last_modified_date,person_id,saser_initiative_id,minutes_id,summary)
+VALUES("Discuss new policies with the intergration team",2,2021-09-10,2021-09-13,2,2,"Discuss the new policies with the intergration team and ask for help with a pipeline")
+
+
+
+/*inserts for action_status table*/
+
+INSERT INTO action(status_description)
+VALUES("Open")
+
+INSERT INTO action(status_description)
+VALUES("WIP")
+
+INSERT INTO action(status_description)
+VALUES("Closed")
+
+INSERT INTO action(status_description)
+VALUES("Canceled")
+
+
+
+/*inserts for person_resposible_per_action table*/
+
+INSERT INTO action(person_id,action_id)
+VALUES(1,1)
+
+INSERT INTO action(person_id,action_id)
+VALUES(2,2)

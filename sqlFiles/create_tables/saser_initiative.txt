@@ -1,0 +1,39 @@
+CREATE TABLE `SASER_Initiative` (
+	`SASER_Initiative_ID` INT NOT NULL AUTO_INCREMENT,
+	`Initiative_Name` VARCHAR(500) NOT NULL COLLATE utf8mb4_unicode_ci,
+	`Name_of_Enterprise_Architect` VARCHAR(250) COLLATE utf8mb4_unicode_ci,
+	`Name_of_Project_Manager` VARCHAR(250) COLLATE utf8mb4_unicode_ci,
+	`Name_Of_Solution_Architect` VARCHAR(250) COLLATE utf8mb4_unicode_ci,
+	`Cluster_ID` INT,
+	`Segment` INT,
+	`Business_Unit` INT,
+	`Approved_Budget` INT, 
+	`Cost_Center` VARCHAR(250) COLLATE utf8mb4_unicode_ci,
+	`Business_Problem` VARCHAR(8000) COLLATE utf8mb4_unicode_ci,
+	`IT_Business_Objective` VARCHAR(8000) COLLATE utf8mb4_unicode_ci,
+	`Select_Date` DATE,
+	`Capability_Category_0_ID` INT NOT NULL,
+	`Capability_Category_1_ID` INT,
+	`Capability_Category_2_ID` INT,
+	`New_Technology` VARCHAR(8000) COLLATE utf8mb4_unicode_ci,
+	`Vendor` VARCHAR(250) COLLATE utf8mb4_unicode_ci,
+	`Implement_Partner` VARCHAR(250) COLLATE utf8mb4_unicode_ci,
+	`Website_Domain` VARCHAR(250) COLLATE utf8mb4_unicode_ci,
+	`Tracking_Status` INT,
+	`Existing_Technology` VARCHAR(8000) COLLATE utf8mb4_unicode_ci,
+	`Date_Presented` DATE,
+	`Purpose_ID` INT,
+	PRIMARY KEY(`SASER_Initiative_ID`),
+	FOREIGN KEY (`Cluster_ID`) REFERENCES `Cluster`(`Cluster_ID`),
+	FOREIGN KEY (`Segment`) REFERENCES `Segment`(`Segment_ID`),
+	FOREIGN KEY (`Business_Unit`) REFERENCES `Business_Unit`(`Business_Unit_ID`),
+	FOREIGN KEY (`Capability_Category_0_ID`) REFERENCES `Capabaility_Category0`(`Category_Zero_ID`),
+	FOREIGN KEY (`Capability_Category_1_ID`) REFERENCES `Capabaility_Category1`(Category_One_ID),
+	FOREIGN KEY (`Capability_Category_2_ID`) REFERENCES `Capabaility_Category2`(`Category_Two_ID`)
+	FOREIGN KEY (`Tracking_Status`) REFERENCES `Tracking_Status`(`Status_ID`)
+	)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `Tracking_Status`(
+	`Status_ID` INT NOT NULL, AUTO_INCREMENT,
+	`Description` VARCHAR(100) NOT NULL COLLATE utf8mb4_unicode_ci
+	)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -1,0 +1,84 @@
+DROP TABLE IF EXISTS `recommendation`;
+
+CREATE TABLE `recommendation` (
+  `recommendation_id` INT COLLATE utf8mb4_unicode_ci NOT NULL AUTO_INCREMENT,
+  `recommendation_description` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `recommendation_summary` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `recommendation_status` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date_logged` DATE COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_modified_date` DATE COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `person_responsible_id` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `person_id` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `saser_iniative_id` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `minutes_id` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY `recommendation_id` (`recommendation_id`),
+	FOREIGN KEY (`recommendation_status`) REFERENCES `recommendation_status` (`recommendation_status`),
+	FOREIGN KEY (`person_responsible_id) REFERENCES `person_responsible_per_recommendation` (`person_responsible_id`),
+	FOREIGN KEY (`person_id`) REFERENCES `person` (`person_id`),
+	FOREIGN KEY (`saser_iniative_id`) REFERENCES `saser_initiative` (`saser_iniative_id`),
+	FOREIGN KEY (`minutes_id`) REFERENCES `minutes` (`minutes_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DROP TABLE IF EXISTS `risk`;
+
+CREATE TABLE `risk` (
+  `risk_id` INT COLLATE utf8mb4_unicode_ci NOT NULL AUTO_INCREMENT,
+  `risk_description` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `risk_summary` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `risk_status` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date_logged` DATE COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_modified_date` DATE COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `person_responsible_id` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `person_id` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `saser_iniative_id` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `minutes_id` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY `risk_id` (`risk_id`),
+	FOREIGN KEY (`risk_status`) REFERENCES `risk_status` (`risk_status`),
+	FOREIGN KEY (`person_responsible_id`) REFERENCES `person_responsible_per_risk` (`person_responsible_id`),
+	FOREIGN KEY (`person_id`) REFERENCES `person` (`person_id`),
+	FOREIGN KEY (`saser_iniative_id`) REFERENCES `saser_initiative` (`saser_iniative_id`),
+	FOREIGN KEY (`minutes_id`) REFERENCES `minutes`  (`minutes_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 
+
+
+DROP TABLE IF EXISTS `risk_status`;
+
+CREATE TABLE `risk_status` (
+`risk_status` INT COLLATE utf8mb4_unicode_ci NOT NULL,
+`status_description` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+PRIMARY KEY `risk_status` (`risk_status`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DROP TABLE IF EXISTS `person_responsible_per_risk`;
+
+CREATE TABLE `person_responsible_per_risk` (
+`person_responsible_id` INT COLLATE utf8mb4_unicode_ci NOT NULL,
+`person_id` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+`risk_id` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+PRIMARY KEY `person_responsible_id` (`person_responsible_id`),
+FOREIGN KEY (`person_id`) REFERENCES `person` (`person_id`),
+FOREIGN KEY (`risk_id`) REFERENCES `risk` (`risk_id`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;.
+
+DROP TABLE IF EXISTS `recommendation_status`;
+
+CREATE TABLE `recommendation_status` (
+`recommendation_status` INT COLLATE utf8mb4_unicode_ci NOT NULL,
+`recommendation_description` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+PRIMARY KEY `recommendation_status` (`recommendation_status`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DROP TABLE IF EXISTS `person_responsible_per_recommendation`;
+
+CREATE TABLE `person_responsible_per_recommendation` (
+`person_responsible_id` INT COLLATE utf8mb4_unicode_ci NOT NULL,
+`person_id` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+`recommendation_id` INT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+PRIMARY KEY `person_responsible_id` (`person_responsible_id`),
+FOREIGN KEY (`person_id`) REFERENCES `person` (`person_id`),
+FOREIGN KEY (`recommendation_id`) REFERENCES `recommendation` (`recommendation_id`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

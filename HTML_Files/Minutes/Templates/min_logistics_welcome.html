@@ -1,0 +1,129 @@
+{%extends "base.html"%}
+{%block content%}
+<style>
+a:link{
+    text-decoration: none;
+    color: #737B81;
+}
+a:active{
+    color: #0075C9;
+    text-decoration: none;
+}
+a:hover{
+    color: #76C2B6;
+    text-decoration: none;
+}
+
+</style>
+
+<h2>SASER Forum Minutes</h2>
+<h4>Capture the minutes of this week’s meeting</h4>
+<br>
+<div class="row" style="text-align: center;">
+    <div class="col-sm-1">
+        <a style href="/minutes/logistics">
+        <b>Logistics</b>
+        </a>
+    </div>
+    <div class="col-sm-1">
+        <a href="/minutes/topics">
+        <b>Topics</b>
+        </a>
+    </div>
+    <div class="col-sm-1">
+        <a href="/minutes/decisions">
+        <b>Decisions</b>
+        </a>
+    </div>
+    <div class="col-sm-1">
+        <a href="/minutes/actions">
+        <b>Actions</b>
+        </a>
+    </div>
+</div>
+<br>
+<div class="card w-50">
+    <div class ="card-header">
+        <div class="row">
+            <div class="col-10">
+                <h6>Details</h6>
+                <i>Date, Scribe, Chair, and Apologies</i> 
+            </div> 
+            <div class="col-2 align-self-center">
+                <a href ="/minutes/logistics/details">
+                    <img src="{{url_for('static',filename='chev_down.png')}}" style="width:25px;height: 25px">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card w-50">
+    <div class ="card-header">
+        <div class="row">
+            <div class="col-10">
+                <h6>Welcome</h6>
+                <i>Welcome, Approval of Minutes, and Actions Carried Over</i> 
+            </div> 
+            <div class="col-2 align-self-center">
+                <a href ="/minutes/logistics">
+                    <img src="{{url_for('static',filename='chev_up.png')}}" style="width:25px;height: 25px">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-10">
+                <p>Welcome Message:</p>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Starting typing..." id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2"><i>Start typing...</i></label>
+                </div>
+                <br>
+                <p>Previous Meeting's Minutes:</p>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Starting typing..." id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2"><i>Comments</i></label>
+                </div>
+                <br>
+                <div class= "row">
+                    <div class="col-3 align-self-center"><button type="button" class="btn btn-primary">Accept</button></div>
+                    <div class="col-3 align-self-center"><button type="button" class="btn btn-secondary">Reject</button></div>         
+                </div>
+                <br>
+                <p>Actions from previous meeting</p>
+                <div class="card w-100">
+                    <div class ="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <h6>Action</h6>
+                                <i>Description of Action 1</i> 
+                            </div> 
+                            <div class="col-3 align-self-center"><button type="button" class="btn btn-primary">Resolve</button></div>
+                            <div class="col-3 align-self-center"><button type="button" class="btn btn-secondary">Postpone</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card w-50">
+    <div class ="card-header">
+        <div class="row">
+            <div class="col-10">
+                <h6>Topics</h6>
+                <i>Topics covered in today’s meeting</i> 
+            </div> 
+            <div class="col-2 align-self-center">
+                <a href ="/minutes/logistics/topics">
+                    <img src="{{url_for('static',filename='chev_down.png')}}" style="width:25px;height: 25px">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock content%}

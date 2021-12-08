@@ -1,0 +1,23 @@
+
+
+DROP TABLE IF EXISTS `minutes`;
+
+CREATE TABLE `minutes` (
+  `minutes_id` int COLLATE utf8mb4_unicode_ci NOT NULL,
+  `agenda_id` int COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `topic_id` int COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meeting_date` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `chairperson` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `minute_taker` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `apologies` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `approval` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `approval_Comments` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file_id` int COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY `minutes_id` (`minutes_id`)
+  FOREIGN KEY (`agenda_id`) REFERENCES Agenda (`agenda_id`)
+  FOREIGN KEY (`topic_id`) REFERENCES Agenda_Topics (`topic_id`)
+  FOREIGN KEY (`file_id`) REFERENCES File (`file_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+

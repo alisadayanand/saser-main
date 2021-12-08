@@ -1,0 +1,50 @@
+DROP TABLE IF EXISTS `Agenda`;
+
+CREATE TABLE `Agenda` (
+  `Agenda_ID` bigint(20) NOT NULL,
+  `Meeting_ID` bigint(20) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  `Time` time DEFAULT NULL,
+  `Location` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Chairperson` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Attendees` varchar(8000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `By_Invitation` varchar(8000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Apologies_Declines` varchar(8000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Minute_Taker` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Next_Meeting_Date` date DEFAULT NULL,
+  `File_ID` bigint(20) DEFAULT NULL,
+  KEY `Agenda_ID` (`Agenda_ID`)
+  CONSTRAINT `FK_Meeting_ID` FOREIGN KEY (Meeting_ID) REFERENCES Meeting_Calendar (Meeting_ID)
+  CONSTRAINT `FK_File_ID` FOREIGN KEY (File_ID) REFERENCES File (File_ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+DROP TABLE IF EXISTS `Agenda_Topics`;
+
+CREATE TABLE `Agenda_Topics` (
+  `Topic_ID` bigint(20) NOT NULL,
+  `Agenda_ID` bigint(20) DEFAULT NULL,
+  `Initiative_ID` bigint(20) DEFAULT NULL,
+  `Minutes_ID` bigint(20) DEFAULT NULL,
+  `Topic_Number` bigint(20) DEFAULT NULL,
+  `Topic_Name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Purpose` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Topic_Owner` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  KEY `Topic_ID` (`Topic_ID`)
+  CONSTRAINT `FK_Agenda_ID` FOREIGN KEY (Agenda_ID) REFERENCES Agenda (Agenda_ID)
+  CONSTRAINT `FK_Initiative_ID` FOREIGN KEY (Initiative_ID) REFERENCES Saser_Initiative (Saser_Initiative_ID)
+  CONSTRAINT `FK_Minutes_ID` FOREIGN KEY (Minutes_ID) REFERENCES Minutes (Minutes_ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+DROP TABLE IF EXISTS `Meeting_Calendar`;
+
+CREATE TABLE `Meeting_Calendar` (
+  `Meeting_ID` bigint(20) NOT NULL,
+  `Meeting_Name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Meeting_Date` date DEFAULT NULL,
+  `Meeting_Time` time DEFAULT NULL,
+  KEY `Meeting_ID` (`Meeting_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

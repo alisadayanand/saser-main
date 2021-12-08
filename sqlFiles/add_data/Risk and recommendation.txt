@@ -1,0 +1,24 @@
+insert  into `recommendation`(`recommendation_description`,`recommendation_summary`,`recommendation_status`,`date_logged`,`last_modified_date`,`person_responsible_id`,`person_id`,`saser_iniative_id`,`minutes_id`) values 
+('Apache NiFi – a Sanity check to be done on the volumes that are going to be put through.','Nothing more to add','1','2021/12/07','2021/12/07','1','1','1','1'),
+('Apache NiFi – a Sanity check to be done.','More to details needed','2','2021/12/07','2021/12/07','2','2','2','2');
+
+insert  into `risk`(`risk_description`,`risk_summary`,`risk_status`,`date_logged`,`last_modified_date`,`person_responsible_id`,`person_id`,`saser_iniative_id`,`minutes_id`) values 
+('Sanity check to be done on the volumes that are going to be put through.','Could be very risky','1','2021/12/07','2021/12/07','1','1','1','1'),
+('Sanity check to be done.','Not risky','2','2021/12/07','2021/12/07','2','2','2','2');
+
+insert  into `recommendation_status`(`recommendation_description`,`recommendation_status`) values 
+('W.I.P','1'),
+('OPEN','2');
+
+insert  into `person_responsible_per_recommendation`(`person_responsible_id`,`person_id`,`recommendation_id`) values 
+('1','1','1'),
+('2','2','2');
+
+insert  into `risk_status`(`risk_description`,`risk_status`) values 
+('Amber','1'),
+('Amber','2'),
+('Green','3');
+
+insert  into `person_responsible_per_risk`(`person_responsible_id`,`person_id`,`risk_id`) values 
+('1','1','1'),
+('2','2','2');

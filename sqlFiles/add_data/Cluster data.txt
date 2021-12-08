@@ -1,0 +1,30 @@
+CREATE TABLE `cluster`(`cluster_id` INT NOT NULL AUTO_INCREMENT
+                       `cluster_name` VARCHAR (150) COLLATE utf8mb4_unicode_ci,
+                        PRIMARY KEY (`cluster_id`) 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+Insert into Cluster (`ID`,`Cluster_Name`)
+            Values (`'1'`,'Short term Insurance');
+
+CREATE TABLE `segment` (`segment_id`INT NOT NULL AUTO_INCREMENT,
+                      `segment_name` VARCHAR (150) COLLATE utf8mb4_unicode_ci NOT NULL,
+		      `cluster_id` INT NOT NULL,
+		       PRIMARY KEY (`segment_id`),
+		       FOREIGN KEY (`cluster_id`) REFERENCES `cluster`(`cluster_id`) 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+Insert into segment (`ID`,`segement_Name`,`Cluster ID`)
+            Values (`'1'`,'SA Retail Affluent','1');
+
+
+CREATE TABLE `business_unit` ( `business_unit_id` INT NOT NULL AUTO_INCREMENT,
+                             `business_unit_name` VARCHAR (150) COLLATE utf8mb4_unicode_ci  NOT NULL,
+			     `segment_id` INT NOT NULL,
+			      PRIMARY KEY (`business_unit_id`),
+			      FOREIGN KEY (`segment_id`) REFERENCES `segment`(`segment_id`) 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+Insert into business_unit (`ID`,`business_unit_ame`,`Cluster ID`)
+            Values (`'1'`,'Sanlam Sky','1');
